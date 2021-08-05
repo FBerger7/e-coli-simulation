@@ -22,7 +22,7 @@ public class Food : MonoBehaviour
         foodValue -= 0.2f;
         var col = gameObject.GetComponent<MeshRenderer>().material.color;
         gameObject.GetComponent<MeshRenderer>().material.color = new Color(col.r, col.g, col.b, foodValue);
-        Debug.Log(col.a);
+       // Debug.Log(col.a);
         if (col.a < 0)
             Destroy(gameObject);
     }

@@ -109,9 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4446c8438e491428bf746f16b58dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodValue: 150
-  randomFoodAmount: 0
-  foodConsumptionTickSeconds: 1
+  foodValue: 1
+  randomFoodAmount: 1
 --- !u!54 &1144918109565228446
 Rigidbody:
   m_ObjectHideFlags: 0
