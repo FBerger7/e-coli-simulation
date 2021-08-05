@@ -5,8 +5,7 @@ using UnityEngine;
 public class BacteriaReproducer : MonoBehaviour
 {
     public Bacteria bacteriaPrefab;
-    //public BacteriaStats bacteriaStats;
-    //public GameObject bacteriaContainer; 
+ 
 
     private GameObject bacteriaContainer;
 
@@ -17,14 +16,12 @@ public class BacteriaReproducer : MonoBehaviour
         childBacteriaObject.transform.parent = bacteriaContainer.transform;
     }
 
-    public void reproduce()
+    public void Reproduce(Vector3 position)
     {
         bacteriaContainer = GameObject.Find("BacteriaContent");
-        //BacteriaManager childBacteriaObject = new BacteriaManager(100);
         Bacteria childBacteriaObject = Instantiate(bacteriaPrefab);
-        childBacteriaObject.GetComponent<Bacteria>().SetEnergy(100);
-        //childBacteriaObject.AddComponent<BacteriaStats>();        
+        position.x += 0.1f;
+        childBacteriaObject.transform.position = position;
         childBacteriaObject.transform.parent = bacteriaContainer.transform;
-        //childBacteriaObject.transform.parent = bacteriaContainer.transform;
     }
 }

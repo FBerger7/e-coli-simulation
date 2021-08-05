@@ -1,57 +1,94 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bacteria : MonoBehaviour
 {
 
-    [SerializeField]
-    private int startEnergy;    
-    private float nextIdleEnergyPayingTime = 0.0f;
-
+    public float spawnRate;
+    public BacteriaReproducer bacteriaMother;
     public float idleEnergyPayingPeriod;
-    public int actualEnergy;
+    public int startingEnergy;
+    public RectTransform healthBar;
+
+    [SerializeField]
+    private int energy;    
+    private float nextIdleEnergyPayingTime = 0.0f; 
+    private float spawnProbability;     
 
     // Start is called before the first frame update
     void Start()
     {
         nextIdleEnergyPayingTime = Time.time;
-        actualEnergy = startEnergy;
+        energy = startingEnergy;
+        UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         PayEnergy();
+        TryToReproduce();
+        CheckForFood();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (energy + 10 > 100)
+            energy = 100;
+        else
+            energy = 100;
+        healthBar.sizeDelta = new Vector2(energy * 2, healthBar.sizeDelta.y);
+        Debug.Log("FOOOOOOOOD");
+    }
+
+    private void CheckForFood()
+    {
+        int a = 0;
+    }
+
+    private void TryToReproduce()
+    {
+        spawnProbability += 0.01f;
+        float a = UnityEngine.Random.Range(5.0f, 100.0f);
+        if (a < spawnProbability)
+        {
+            spawnProbability = 0.0f;
+            bacteriaMother.Reproduce(gameObject.transform.position);
+            UIManager.globalBacteriaCount++;
+        }
     }
 
     private void PayEnergy()
     {
+        PayEnergyForExisting();
+
+    }
+
+    private void PayEnergyForExisting()
+    {
         if (Time.time > nextIdleEnergyPayingTime)
         {
             nextIdleEnergyPayingTime += idleEnergyPayingPeriod;
-            PayEnergyForExisting();
+            energy -= 17;
         }
         if (GetEnergy() <= 0)
         {
             UIManager.globalBacteriaCount--;
             Destroy(gameObject);
         }
-
-    }
-
-    private void PayEnergyForExisting()
-    {
-        actualEnergy -= 17;
+        healthBar.sizeDelta = new Vector2(energy * 2, healthBar.sizeDelta.y);
     }
 
     public int GetEnergy()
     {
-        return actualEnergy;
+        return energy;
     }
 
     public void SetEnergy(int energy)
     {
-        this.actualEnergy = energy;
+        this.energy = energy;
     }
 }

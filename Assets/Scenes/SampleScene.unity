@@ -557,6 +557,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1852181815, guid: c332c426fc21fd54b8a9e80115dab2c8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852181815, guid: c332c426fc21fd54b8a9e80115dab2c8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852181816, guid: c332c426fc21fd54b8a9e80115dab2c8, type: 3}
+      propertyPath: foodValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852181816, guid: c332c426fc21fd54b8a9e80115dab2c8, type: 3}
+      propertyPath: randomFoodAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4291244939528307088, guid: c332c426fc21fd54b8a9e80115dab2c8, type: 3}
       propertyPath: m_RootOrder
       value: 0
