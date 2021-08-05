@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class food : MonoBehaviour
+public class Food : MonoBehaviour
 {
 
     public float foodValue = 1;
@@ -19,9 +19,10 @@ public class food : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {        
-        foodValue -= 0.1f;
+        foodValue -= 0.2f;
         var col = gameObject.GetComponent<MeshRenderer>().material.color;
         gameObject.GetComponent<MeshRenderer>().material.color = new Color(col.r, col.g, col.b, foodValue);
+        Debug.Log(col.a);
         if (col.a < 0)
             Destroy(gameObject);
     }

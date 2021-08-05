@@ -39,9 +39,8 @@ public class Bacteria : MonoBehaviour
         if (energy + 10 > 100)
             energy = 100;
         else
-            energy = 100;
+            energy += 30;
         healthBar.sizeDelta = new Vector2(energy * 2, healthBar.sizeDelta.y);
-        Debug.Log("FOOOOOOOOD");
     }
 
     private void CheckForFood()
