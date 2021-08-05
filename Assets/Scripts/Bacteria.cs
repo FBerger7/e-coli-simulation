@@ -31,7 +31,6 @@ public class Bacteria : MonoBehaviour
     {
         PayEnergy();
         TryToReproduce();
-        CheckForFood();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,11 +40,6 @@ public class Bacteria : MonoBehaviour
         else
             energy += 30;
         healthBar.sizeDelta = new Vector2(energy * 2, healthBar.sizeDelta.y);
-    }
-
-    private void CheckForFood()
-    {
-        int a = 0;
     }
 
     private void TryToReproduce()
